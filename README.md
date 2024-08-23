@@ -7,7 +7,7 @@
 - ⚡ Fun fact: **I love experimenting with new technologies and turning ideas into practical solutions.**
 
 ### My Expertise:
-- **Languages:** C#, C++, C, PHP, MySQL
+- **Languages:** JavaScript, Java, C#, C++, C, PHP, MySQL, Python
 - **Development:** Skilled in both front-end and back-end development
 
 
