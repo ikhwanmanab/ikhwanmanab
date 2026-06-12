@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Muhammad Ikhwan Abdul Manab | Senior Software AI Developer</title>
   <meta name="description" content="Portfolio of Muhammad Ikhwan Abdul Manab, Senior Software AI Developer specializing in AI, AIoT, Industrial IoT, Smart City, Industrial Systems, and enterprise dashboards." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #f6f9ff;
-      --surface: rgba(255,255,255,.82);
+      --surface: rgba(255,255,255,.84);
       --surface-strong: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
-      --soft: #eaf1ff;
       --line: rgba(15,23,42,.09);
       --blue: #2563eb;
       --cyan: #06b6d4;
@@ -29,7 +31,9 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -43,201 +47,797 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
     .nav {
-      position: sticky; top: 0; z-index: 50;
+      position: sticky;
+      top: 0;
+      z-index: 50;
       backdrop-filter: blur(22px);
       background: rgba(255,255,255,.78);
       border-bottom: 1px solid var(--line);
     }
-    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.4px; }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.4px;
+    }
+
     .brand-mark {
-      width: 42px; height: 42px; border-radius: 14px;
-      display: grid; place-items: center;
-      color: white; font-weight: 900;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       box-shadow: 0 16px 36px rgba(37,99,235,.28);
       transition: transform .25s var(--ease);
     }
-    .brand:hover .brand-mark { transform: rotate(-8deg) scale(1.06); }
-    .links { display: flex; align-items: center; gap: 8px; color: var(--muted); font-weight: 800; font-size: 14px; }
-    .links a { padding: 10px 12px; border-radius: 12px; transition: .22s var(--ease); }
-    .links a:hover { color: var(--blue); background: #eff6ff; transform: translateY(-1px); }
 
-    .hero { padding: 84px 0 42px; }
-    .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 46px; align-items: center; }
+    .brand:hover .brand-mark {
+      transform: rotate(-8deg) scale(1.06);
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .links a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: .22s var(--ease);
+    }
+
+    .links a:hover {
+      color: var(--blue);
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 84px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 46px;
+      align-items: center;
+    }
+
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px;
-      background: rgba(255,255,255,.78); color: #1e40af; font-weight: 900; font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: #1e40af;
+      font-weight: 900;
+      font-size: 13px;
       box-shadow: 0 12px 32px rgba(15,23,42,.06);
     }
-    h1 { font-size: clamp(44px, 7vw, 84px); line-height: .95; letter-spacing: -4px; margin: 24px 0 20px; }
-    .gradient { background: linear-gradient(135deg, #1d4ed8, #0891b2, #4338ca); -webkit-background-clip: text; color: transparent; }
-    .lead { font-size: 20px; line-height: 1.75; color: var(--muted); max-width: 760px; margin: 0 0 30px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-    .btn {
-      border: 1px solid var(--line); padding: 14px 18px; border-radius: 16px;
-      background: white; font-weight: 900; box-shadow: 0 14px 34px rgba(15,23,42,.08);
-      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
-      display: inline-flex; align-items: center; gap: 8px;
+
+    h1 {
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin: 24px 0 20px;
     }
-    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: rgba(37,99,235,.22); }
-    .btn.primary { color: white; background: linear-gradient(135deg, var(--blue), var(--cyan)); border: 0; }
+
+    .gradient {
+      background: linear-gradient(135deg, #1d4ed8, #0891b2, #4338ca);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: white;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(15,23,42,.08);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,99,235,.22);
+    }
+
+    .btn.primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border: 0;
+    }
 
     .hero-panel {
-      position: relative; padding: 18px; border-radius: 38px; background: var(--surface);
-      border: 1px solid rgba(255,255,255,.9); box-shadow: var(--shadow); overflow: hidden;
+      position: relative;
+      padding: 18px;
+      border-radius: 38px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: var(--shadow);
+      overflow: hidden;
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
     }
-    .hero-panel:hover { transform: translateY(-8px) rotate(.4deg); box-shadow: var(--shadow-hover); }
-    .hero-panel:before {
-      content: ""; position: absolute; inset: -90px -80px auto auto; width: 240px; height: 240px;
-      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(6,182,212,.2)); border-radius: 999px;
+
+    .hero-panel:hover {
+      transform: translateY(-8px) rotate(.4deg);
+      box-shadow: var(--shadow-hover);
     }
+
+    .hero-panel:before {
+      content: "";
+      position: absolute;
+      inset: -90px -80px auto auto;
+      width: 240px;
+      height: 240px;
+      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(6,182,212,.2));
+      border-radius: 999px;
+    }
+
     .portrait {
-      position: relative; min-height: 510px; border-radius: 30px;
+      position: relative;
+      min-height: 510px;
+      border-radius: 30px;
       background:
         linear-gradient(180deg, rgba(15,23,42,.02), rgba(15,23,42,.06)),
         url('images/passportfoto.png') center top/cover no-repeat,
         linear-gradient(135deg, #dbeafe, #f8fafc);
-      overflow: hidden; padding: 22px; display: flex; align-items: end;
+      overflow: hidden;
+      padding: 22px;
+      display: flex;
+      align-items: end;
     }
+
     .portrait:after {
-      content: "AIoT"; position: absolute; right: 18px; top: 14px; font-size: 80px; font-weight: 900;
-      letter-spacing: -6px; color: rgba(37,99,235,.08);
+      content: "AIoT";
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      font-size: 80px;
+      font-weight: 900;
+      letter-spacing: -6px;
+      color: rgba(37,99,235,.08);
     }
+
     .floating {
-      position: relative; width: 100%; border: 1px solid rgba(255,255,255,.75); background: rgba(255,255,255,.78);
-      backdrop-filter: blur(18px); border-radius: 22px; padding: 18px;
+      position: relative;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.75);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(18px);
+      border-radius: 22px;
+      padding: 18px;
     }
-    .floating b { display: block; font-size: 18px; }
-    .floating span { color: var(--muted); font-weight: 800; font-size: 13px; }
-    .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
-    .mini { padding: 10px; border-radius: 14px; background: #f8fbff; border: 1px solid var(--line); font-size: 12px; font-weight: 900; color: #1e40af; text-align: center; }
 
-    section { padding: 60px 0; }
-    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 26px; }
-    .section-head h2 { margin: 0; font-size: clamp(30px, 4vw, 48px); letter-spacing: -2px; }
-    .section-head p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 590px; }
+    .floating b {
+      display: block;
+      font-size: 18px;
+    }
 
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .stat, .card, .project, .experience, .solution, .resume-card, .architecture, .timeline-card {
-      background: var(--surface); border: 1px solid rgba(255,255,255,.86); border-radius: var(--radius); box-shadow: var(--shadow);
+    .floating span {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .mini {
+      padding: 10px;
+      border-radius: 14px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 900;
+      color: #1e40af;
+      text-align: center;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 590px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat,
+    .card,
+    .project,
+    .experience,
+    .solution,
+    .resume-card,
+    .architecture,
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
     }
-    .stat:hover, .card:hover, .project:hover, .experience:hover, .solution:hover, .resume-card:hover, .architecture:hover, .timeline-card:hover {
-      transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: rgba(37,99,235,.22); background: rgba(255,255,255,.94);
-    }
-    .stat { padding: 24px; position: relative; overflow: hidden; }
-    .stat:after { content: ""; position: absolute; width: 90px; height: 90px; right: -35px; top: -35px; border-radius: 999px; background: rgba(37,99,235,.10); }
-    .stat strong { display: block; font-size: 38px; letter-spacing: -2px; }
-    .stat span { color: var(--muted); font-weight: 800; }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .card, .solution, .architecture, .resume-card, .timeline-card { padding: 24px; }
+    .stat:hover,
+    .card:hover,
+    .project:hover,
+    .experience:hover,
+    .solution:hover,
+    .resume-card:hover,
+    .architecture:hover,
+    .timeline-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,99,235,.22);
+      background: rgba(255,255,255,.94);
+    }
+
+    .stat {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat:after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -35px;
+      top: -35px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.10);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 38px;
+      letter-spacing: -2px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card,
+    .solution,
+    .architecture,
+    .resume-card,
+    .timeline-card {
+      padding: 24px;
+    }
+
     .icon {
-      width: 50px; height: 50px; border-radius: 17px; display: grid; place-items: center;
-      background: #eff6ff; color: var(--blue); font-size: 24px; margin-bottom: 16px;
+      width: 50px;
+      height: 50px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      color: var(--blue);
+      font-size: 24px;
+      margin-bottom: 16px;
       transition: transform .25s var(--ease);
     }
-    .card:hover .icon, .solution:hover .icon { transform: scale(1.08) rotate(-4deg); }
-    .card h3, .project h3, .experience h3, .solution h3, .architecture h3, .resume-card h3, .timeline-card h3 { margin: 0 0 10px; font-size: 21px; }
-    .card p, .project p, .experience p, .solution p, .architecture p, .resume-card p, .timeline-card p { margin: 0; color: var(--muted); line-height: 1.65; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .tag { padding: 8px 10px; border-radius: 999px; background: #eef6ff; color: #1e40af; font-size: 12px; font-weight: 900; }
 
-    .solutions-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .solution { position: relative; overflow: hidden; min-height: 250px; }
-    .solution:after { content: ""; position: absolute; inset: auto -40px -40px auto; width: 150px; height: 150px; border-radius: 50%; background: rgba(6,182,212,.12); }
-    .solution ul { margin-top: 16px; }
+    .card:hover .icon,
+    .solution:hover .icon {
+      transform: scale(1.08) rotate(-4deg);
+    }
 
-    .experience { padding: 26px; margin-bottom: 18px; display: grid; grid-template-columns: 270px 1fr; gap: 26px; }
-    .company { font-weight: 900; font-size: 22px; }
-    .role { color: var(--blue); font-weight: 900; margin-top: 6px; }
-    ul { margin: 14px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.75; }
+    .card h3,
+    .project h3,
+    .experience h3,
+    .solution h3,
+    .architecture h3,
+    .resume-card h3,
+    .timeline-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
 
-    .project { overflow: hidden; position: relative; }
+    .card p,
+    .project p,
+    .experience p,
+    .solution p,
+    .architecture p,
+    .resume-card p,
+    .timeline-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #eef6ff;
+      color: #1e40af;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .solutions-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .solution {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+    }
+
+    .solution:after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(6,182,212,.12);
+    }
+
+    .solution ul {
+      margin-top: 16px;
+    }
+
+    .experience {
+      padding: 26px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 26px;
+    }
+
+    .company {
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .role {
+      color: var(--blue);
+      font-weight: 900;
+      margin-top: 6px;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .project {
+      overflow: hidden;
+      position: relative;
+    }
+
     .project-top {
-      height: 170px; background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(6,182,212,.16));
-      display: grid; place-items: center; font-size: 48px; position: relative;
+      height: 170px;
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(6,182,212,.16));
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      position: relative;
     }
+
     .project-top:before {
-      content: attr(data-label); position: absolute; top: 16px; left: 16px; font-size: 12px; font-weight: 900;
-      color: #1e40af; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.9); padding: 8px 10px; border-radius: 999px;
+      content: attr(data-label);
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #1e40af;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.9);
+      padding: 8px 10px;
+      border-radius: 999px;
     }
-    .project-body { padding: 24px; }
-    .project-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
-    .meta-box { border: 1px solid var(--line); background: #f8fbff; border-radius: 14px; padding: 12px; }
-    .meta-box small { display: block; color: var(--muted); font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; }
-    .meta-box b { display: block; margin-top: 4px; font-size: 13px; }
-    .impact { margin-top: 16px; padding: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; color: #166534; font-weight: 850; line-height: 1.55; }
-    .project-link { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-weight: 900; color: var(--blue); }
-    .project:hover .project-link { gap: 12px; }
 
-    .architecture-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
-    .flow span { padding: 10px 12px; border-radius: 14px; background: #eff6ff; color: #1e40af; font-size: 12px; font-weight: 900; }
-    .flow i { color: var(--muted); font-style: normal; font-weight: 900; }
+    .project-body {
+      padding: 24px;
+    }
 
-    .tech-cloud { display: flex; flex-wrap: wrap; gap: 12px; }
+    .project-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .meta-box {
+      border: 1px solid var(--line);
+      background: #f8fbff;
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .meta-box small {
+      display: block;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .meta-box b {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .impact {
+      margin-top: 16px;
+      padding: 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      color: #166534;
+      font-weight: 850;
+      line-height: 1.55;
+    }
+
+    .project-link {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .project:hover .project-link {
+      gap: 12px;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .flow span {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #eff6ff;
+      color: #1e40af;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .flow i {
+      color: var(--muted);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .tech-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
     .tech {
-      padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.88); border: 1px solid var(--line); font-weight: 900;
-      box-shadow: 0 10px 26px rgba(15,23,42,.05); transition: .22s var(--ease);
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      font-weight: 900;
+      box-shadow: 0 10px 26px rgba(15,23,42,.05);
+      transition: .22s var(--ease);
     }
-    .tech:hover { transform: translateY(-4px) scale(1.03); color: var(--blue); box-shadow: var(--shadow-hover); }
 
-    .timeline { position: relative; display: grid; gap: 18px; }
-    .timeline:before { content: ""; position: absolute; left: 20px; top: 10px; bottom: 10px; width: 2px; background: #bfdbfe; }
-    .timeline-item { position: relative; padding-left: 58px; }
-    .dot { position: absolute; left: 8px; top: 8px; width: 26px; height: 26px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--cyan)); box-shadow: 0 12px 28px rgba(37,99,235,.25); }
-    .timeline-card { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; }
-    .year { font-size: 28px; font-weight: 900; color: var(--blue); letter-spacing: -1px; }
+    .tech:hover {
+      transform: translateY(-4px) scale(1.03);
+      color: var(--blue);
+      box-shadow: var(--shadow-hover);
+    }
 
-    .resume-frame { margin-top: 18px; height: 520px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #f8fafc; }
-    .resume-frame iframe { width: 100%; height: 100%; border: 0; }
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: #bfdbfe;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 58px;
+    }
+
+    .dot {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 12px 28px rgba(37,99,235,.25);
+    }
+
+    .timeline-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .year {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--blue);
+      letter-spacing: -1px;
+    }
+
+    .resume-frame {
+      margin-top: 18px;
+      height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+
+    .resume-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
     .contact-box {
-      padding: 38px; border-radius: 34px; background: linear-gradient(135deg, #0f172a, #1e3a8a, #0891b2); color: white;
-      display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; box-shadow: var(--shadow); position: relative; overflow: hidden;
+      padding: 38px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #0891b2);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
-    .contact-box:before { content: ""; position: absolute; width: 280px; height: 280px; border-radius: 999px; right: -90px; top: -90px; background: rgba(255,255,255,.10); }
-    .contact-box h2 { margin: 0; font-size: clamp(30px, 4vw, 48px); letter-spacing: -2px; }
-    .contact-box p { color: rgba(255,255,255,.76); line-height: 1.7; margin: 10px 0 0; }
-    .contact-box .btn { color: #0f172a; position: relative; }
-    footer { padding: 34px 0; color: var(--muted); text-align: center; font-weight: 800; }
 
-    .reveal { animation: rise .7s var(--ease) both; }
-    @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .contact-box:before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      right: -90px;
+      top: -90px;
+      background: rgba(255,255,255,.10);
+    }
+
+    .contact-box h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+
+    .contact-box p {
+      color: rgba(255,255,255,.76);
+      line-height: 1.7;
+      margin: 10px 0 0;
+    }
+
+    .contact-box .btn {
+      color: #0f172a;
+      position: relative;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .reveal {
+      animation: rise .7s var(--ease) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     @media (max-width: 980px) {
-      .hero-grid, .experience, .contact-box, .architecture-grid { grid-template-columns: 1fr; }
-      .grid-3, .stats, .solutions-strip { grid-template-columns: repeat(2, 1fr); }
-      .links { display: none; }
-      .portrait { min-height: 430px; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 12px; }
+      .hero-grid,
+      .experience,
+      .contact-box,
+      .architecture-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .stats,
+      .solutions-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .links {
+        display: none;
+      }
+
+      .portrait {
+        min-height: 430px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
     }
+
     @media (max-width: 620px) {
-      .container { width: min(100% - 24px, 1180px); }
-      .grid-3, .grid-2, .stats, .solutions-strip { grid-template-columns: 1fr; }
-      h1 { letter-spacing: -2px; }
-      .hero { padding-top: 48px; }
-      .project-meta { grid-template-columns: 1fr; }
-      .timeline-card { grid-template-columns: 1fr; }
-      .resume-frame { height: 430px; }
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .grid-3,
+      .grid-2,
+      .stats,
+      .solutions-strip {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-card {
+        grid-template-columns: 1fr;
+      }
+
+      .resume-frame {
+        height: 430px;
+      }
     }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand"><span class="brand-mark">IM</span><span>Ikhwan Manab</span></a>
+      <a href="#top" class="brand">
+        <span class="brand-mark">IM</span>
+        <span>Ikhwan Manab</span>
+      </a>
+
       <div class="links">
         <a href="#solutions">Solutions</a>
         <a href="#projects">Projects</a>
@@ -255,20 +855,28 @@
         <div>
           <span class="eyebrow">🚀 Senior Software AI Developer</span>
           <h1>Building <span class="gradient">AI, AIoT & smart infrastructure</span> platforms.</h1>
-          <p class="lead">I design and develop enterprise dashboards, IoT platforms, AI monitoring systems, industrial integrations, and smart city solutions — from concept and architecture to deployment.</p>
+          <p class="lead">
+            I design and develop enterprise dashboards, IoT platforms, AI monitoring systems,
+            industrial integrations, and smart city solutions — from concept and architecture to deployment.
+          </p>
+
           <div class="hero-actions">
             <a class="btn primary" href="#projects">View Featured Projects →</a>
             <a class="btn" href="doc/Resume.pdf">Download Resume</a>
             <a class="btn" href="https://github.com/ikhwanmanab">GitHub Profile</a>
           </div>
         </div>
+
         <aside class="hero-panel">
           <div class="portrait">
             <div class="floating">
               <b>Muhammad Ikhwan Abdul Manab</b>
               <span>AI • IoT • Full Stack • Smart City • Industrial Systems</span>
+
               <div class="mini-grid">
-                <div class="mini">AI</div><div class="mini">AIoT</div><div class="mini">IoT</div>
+                <div class="mini">AI</div>
+                <div class="mini">AIoT</div>
+                <div class="mini">IoT</div>
               </div>
             </div>
           </div>
@@ -289,13 +897,56 @@
       <div class="container">
         <div class="section-head">
           <h2>Solutions Built</h2>
-          <p>Positioned as practical product systems, not just code. Each solution connects software, devices, data, and operational use cases.</p>
+          <p>
+            Positioned as practical product systems, not just code.
+            Each solution connects software, devices, data, and operational use cases.
+          </p>
         </div>
+
         <div class="solutions-strip">
-          <div class="solution"><div class="icon">🤖</div><h3>AI Monitoring</h3><p>Computer vision and intelligent dashboards for fleet, surveillance, and operational analytics.</p><ul><li>AI Dashcam</li><li>Surveillance Monitoring</li><li>Financial AI System</li></ul></div>
-          <div class="solution"><div class="icon">🏙️</div><h3>Smart City</h3><p>Platforms for city-scale visibility, tracking, monitoring, and infrastructure management.</p><ul><li>EV Charging</li><li>Smart Waste</li><li>Fleet Management</li></ul></div>
-          <div class="solution"><div class="icon">🏭</div><h3>Industrial IoT</h3><p>Connected industrial systems using data loggers, sensors, PLC connectivity, and telemetry.</p><ul><li>IOScout</li><li>MQTT / Modbus</li><li>Device Configuration</li></ul></div>
-          <div class="solution"><div class="icon">🌱</div><h3>Smart Agriculture</h3><p>Digital farming visibility through sensor data, dashboards, and environment monitoring.</p><ul><li>Fig Farm Dashboard</li><li>Sensor Monitoring</li><li>Operational Reports</li></ul></div>
+          <div class="solution">
+            <div class="icon">🤖</div>
+            <h3>AI Monitoring</h3>
+            <p>Computer vision and intelligent dashboards for fleet, surveillance, and operational analytics.</p>
+            <ul>
+              <li>AI Dashcam</li>
+              <li>Surveillance Monitoring</li>
+              <li>Financial AI System</li>
+            </ul>
+          </div>
+
+          <div class="solution">
+            <div class="icon">🏙️</div>
+            <h3>Smart City</h3>
+            <p>Platforms for city-scale visibility, tracking, monitoring, and infrastructure management.</p>
+            <ul>
+              <li>EV Charging</li>
+              <li>Smart Waste</li>
+              <li>Fleet Management</li>
+            </ul>
+          </div>
+
+          <div class="solution">
+            <div class="icon">🏭</div>
+            <h3>Industrial IoT</h3>
+            <p>Connected industrial systems using data loggers, sensors, PLC connectivity, and telemetry.</p>
+            <ul>
+              <li>IOScout</li>
+              <li>MQTT / Modbus</li>
+              <li>Device Configuration</li>
+            </ul>
+          </div>
+
+          <div class="solution">
+            <div class="icon">🌱</div>
+            <h3>Smart Agriculture</h3>
+            <p>Digital farming visibility through sensor data, dashboards, and environment monitoring.</p>
+            <ul>
+              <li>Fig Farm Dashboard</li>
+              <li>Sensor Monitoring</li>
+              <li>Operational Reports</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -304,15 +955,120 @@
       <div class="container">
         <div class="section-head">
           <h2>Featured Project Case Studies</h2>
-          <p>Each card now shows problem, deployment context, technology, and business impact. Hover the cards for better interaction.</p>
+          <p>
+            Each card shows problem, deployment context, technology, and business impact.
+            Hover the cards for a more polished experience.
+          </p>
         </div>
+
         <div class="grid-3">
-          <article class="project"><div class="project-top" data-label="AI + Fleet">🚘</div><div class="project-body"><h3>AI Dashcam Monitoring</h3><p>AI-powered monitoring solution for fleet safety, driver behavior visibility, and operational supervision.</p><div class="project-meta"><div class="meta-box"><small>Use Case</small><b>Fleet Safety</b></div><div class="meta-box"><small>Deployment</small><b>Perbadanan Putrajaya</b></div><div class="meta-box"><small>Stack</small><b>AI Camera + Dashboard</b></div><div class="meta-box"><small>Role</small><b>System Delivery</b></div></div><div class="impact">Impact: Better fleet visibility, monitoring, and driver safety intelligence.</div><a class="project-link" href="#architecture">View architecture →</a></div></article>
-          <article class="project"><div class="project-top" data-label="RFID + Aid">🍚</div><div class="project-body"><h3>Smart Rice Machine for Asnaf</h3><p>RFID-based rice aid dispensing system connected to server-side allocation and registration workflows.</p><div class="project-meta"><div class="meta-box"><small>Problem</small><b>Manual Aid Distribution</b></div><div class="meta-box"><small>Hardware</small><b>RFID + Dispenser</b></div><div class="meta-box"><small>Backend</small><b>Server Allocation</b></div><div class="meta-box"><small>Period</small><b>COVID-19 NGO</b></div></div><div class="impact">Impact: Automated and controlled aid distribution for eligible Asnaf recipients.</div><a class="project-link" href="#architecture">View flow →</a></div></article>
-          <article class="project"><div class="project-top" data-label="IoT + Farm">🌱</div><div class="project-body"><h3>Smart Farming Dashboard</h3><p>Real-time fig farm dashboard for crop, environment, and sensor monitoring.</p><div class="project-meta"><div class="meta-box"><small>Domain</small><b>Agriculture</b></div><div class="meta-box"><small>Data</small><b>Sensor Telemetry</b></div><div class="meta-box"><small>Output</small><b>Dashboard</b></div><div class="meta-box"><small>Company</small><b>PICORP</b></div></div><div class="impact">Impact: Improved farm visibility through real-time monitoring and reporting.</div><a class="project-link" href="#experience">View context →</a></div></article>
-          <article class="project"><div class="project-top" data-label="EV + Map">⚡</div><div class="project-body"><h3>EV Charging Platform</h3><p>Dashboard for EV charging and battery swap station visibility, location discovery, and operational monitoring.</p><div class="project-meta"><div class="meta-box"><small>Use Case</small><b>Station Locator</b></div><div class="meta-box"><small>Feature</small><b>Battery Swap</b></div><div class="meta-box"><small>UI</small><b>Location Dashboard</b></div><div class="meta-box"><small>Domain</small><b>Smart Mobility</b></div></div><div class="impact">Impact: Better EV station visibility and battery swap accessibility.</div><a class="project-link" href="#solutions">View solution →</a></div></article>
-          <article class="project"><div class="project-top" data-label="Smart City">🗑️</div><div class="project-body"><h3>Smart Waste Bin Tracker</h3><p>Smart waste monitoring platform for tracking bin status, operations, and city service visibility.</p><div class="project-meta"><div class="meta-box"><small>Domain</small><b>Smart City</b></div><div class="meta-box"><small>Feature</small><b>Bin Tracking</b></div><div class="meta-box"><small>Output</small><b>Ops Dashboard</b></div><div class="meta-box"><small>Goal</small><b>Cleaner City</b></div></div><div class="impact">Impact: Supports smarter collection planning and city service operations.</div><a class="project-link" href="#solutions">View solution →</a></div></article>
-          <article class="project"><div class="project-top" data-label="Industrial IoT">🏭</div><div class="project-body"><h3>IOScout Configurator</h3><p>Configurator for in-house industrial data logger products, streamlining setup and device configuration.</p><div class="project-meta"><div class="meta-box"><small>Product</small><b>Data Logger</b></div><div class="meta-box"><small>Purpose</small><b>Configuration</b></div><div class="meta-box"><small>Company</small><b>PICORP</b></div><div class="meta-box"><small>Domain</small><b>Industrial IoT</b></div></div><div class="impact">Impact: Faster product setup and more consistent technical configuration.</div><a class="project-link" href="#architecture">View flow →</a></div></article>
+          <article class="project">
+            <div class="project-top" data-label="AI + Fleet">🚘</div>
+            <div class="project-body">
+              <h3>AI Dashcam Monitoring</h3>
+              <p>AI-powered monitoring solution for fleet safety, driver behavior visibility, and operational supervision.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Use Case</small><b>Fleet Safety</b></div>
+                <div class="meta-box"><small>Deployment</small><b>Perbadanan Putrajaya</b></div>
+                <div class="meta-box"><small>Stack</small><b>AI Camera + Dashboard</b></div>
+                <div class="meta-box"><small>Role</small><b>System Delivery</b></div>
+              </div>
+
+              <div class="impact">Impact: Better fleet visibility, monitoring, and driver safety intelligence.</div>
+              <a class="project-link" href="#architecture">View architecture →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top" data-label="RFID + Aid">🍚</div>
+            <div class="project-body">
+              <h3>Smart Rice Machine for Asnaf</h3>
+              <p>RFID-based rice aid dispensing system connected to server-side allocation and registration workflows.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Problem</small><b>Manual Aid Distribution</b></div>
+                <div class="meta-box"><small>Hardware</small><b>RFID + Dispenser</b></div>
+                <div class="meta-box"><small>Backend</small><b>Server Allocation</b></div>
+                <div class="meta-box"><small>Period</small><b>COVID-19 NGO</b></div>
+              </div>
+
+              <div class="impact">Impact: Automated and controlled aid distribution for eligible Asnaf recipients.</div>
+              <a class="project-link" href="projects/smart-rice-machine.html">Open case study →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top" data-label="IoT + Farm">🌱</div>
+            <div class="project-body">
+              <h3>Smart Farming Dashboard</h3>
+              <p>Real-time fig farm dashboard for crop, environment, and sensor monitoring.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Domain</small><b>Agriculture</b></div>
+                <div class="meta-box"><small>Data</small><b>Sensor Telemetry</b></div>
+                <div class="meta-box"><small>Output</small><b>Dashboard</b></div>
+                <div class="meta-box"><small>Company</small><b>PICORP</b></div>
+              </div>
+
+              <div class="impact">Impact: Improved farm visibility through real-time monitoring and reporting.</div>
+              <a class="project-link" href="#experience">View context →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top" data-label="EV + Map">⚡</div>
+            <div class="project-body">
+              <h3>EV Charging Platform</h3>
+              <p>Dashboard for EV charging and battery swap station visibility, location discovery, and operational monitoring.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Use Case</small><b>Station Locator</b></div>
+                <div class="meta-box"><small>Feature</small><b>Battery Swap</b></div>
+                <div class="meta-box"><small>UI</small><b>Location Dashboard</b></div>
+                <div class="meta-box"><small>Domain</small><b>Smart Mobility</b></div>
+              </div>
+
+              <div class="impact">Impact: Better EV station visibility and battery swap accessibility.</div>
+              <a class="project-link" href="#solutions">View solution →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top" data-label="Smart City">🗑️</div>
+            <div class="project-body">
+              <h3>Smart Waste Bin Tracker</h3>
+              <p>Smart waste monitoring platform for tracking bin status, operations, and city service visibility.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Domain</small><b>Smart City</b></div>
+                <div class="meta-box"><small>Feature</small><b>Bin Tracking</b></div>
+                <div class="meta-box"><small>Output</small><b>Ops Dashboard</b></div>
+                <div class="meta-box"><small>Goal</small><b>Cleaner City</b></div>
+              </div>
+
+              <div class="impact">Impact: Supports smarter collection planning and city service operations.</div>
+              <a class="project-link" href="#solutions">View solution →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top" data-label="Industrial IoT">🏭</div>
+            <div class="project-body">
+              <h3>IOScout Configurator</h3>
+              <p>Configurator for in-house industrial data logger products, streamlining setup and device configuration.</p>
+
+              <div class="project-meta">
+                <div class="meta-box"><small>Product</small><b>Data Logger</b></div>
+                <div class="meta-box"><small>Purpose</small><b>Configuration</b></div>
+                <div class="meta-box"><small>Company</small><b>PICORP</b></div>
+                <div class="meta-box"><small>Domain</small><b>Industrial IoT</b></div>
+              </div>
+
+              <div class="impact">Impact: Faster product setup and more consistent technical configuration.</div>
+              <a class="project-link" href="#architecture">View flow →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -321,13 +1077,43 @@
       <div class="container">
         <div class="section-head">
           <h2>Architecture Thinking</h2>
-          <p>Simple system flows make the portfolio feel more senior-level because they show how the systems connect end-to-end.</p>
+          <p>
+            Simple system flows make the portfolio feel more senior-level because they show how the systems connect end-to-end.
+          </p>
         </div>
+
         <div class="architecture-grid">
-          <div class="architecture"><h3>Typical AIoT Monitoring Flow</h3><p>Used across fleet, surveillance, agriculture, smart city, and device monitoring platforms.</p><div class="flow"><span>Device / Sensor</span><i>→</i><span>Gateway</span><i>→</i><span>API</span><i>→</i><span>Database</span><i>→</i><span>Dashboard</span><i>→</i><span>AI Analytics</span></div></div>
-          <div class="architecture"><h3>Smart Rice Machine Flow</h3><p>Built around RFID identity, server allocation, and controlled machine dispensing.</p><div class="flow"><span>RFID Card</span><i>→</i><span>User Profile</span><i>→</i><span>Rice Allocation</span><i>→</i><span>Machine Command</span><i>→</i><span>Dispense KG</span></div></div>
-          <div class="architecture"><h3>EV Platform Flow</h3><p>Focused on location visibility, station status, and battery swapping workflow.</p><div class="flow"><span>Station</span><i>→</i><span>Battery Status</span><i>→</i><span>Cloud</span><i>→</i><span>Map Dashboard</span><i>→</i><span>User Action</span></div></div>
-          <div class="architecture"><h3>Industrial Data Logger Flow</h3><p>Configuration layer for device setup, telemetry, and industrial monitoring pipelines.</p><div class="flow"><span>Configurator</span><i>→</i><span>Data Logger</span><i>→</i><span>Telemetry</span><i>→</i><span>Storage</span><i>→</i><span>Reports</span></div></div>
+          <div class="architecture">
+            <h3>Typical AIoT Monitoring Flow</h3>
+            <p>Used across fleet, surveillance, agriculture, smart city, and device monitoring platforms.</p>
+            <div class="flow">
+              <span>Device / Sensor</span><i>→</i><span>Gateway</span><i>→</i><span>API</span><i>→</i><span>Database</span><i>→</i><span>Dashboard</span><i>→</i><span>AI Analytics</span>
+            </div>
+          </div>
+
+          <div class="architecture">
+            <h3>Smart Rice Machine Flow</h3>
+            <p>Built around RFID identity, server allocation, and controlled machine dispensing.</p>
+            <div class="flow">
+              <span>RFID Card</span><i>→</i><span>User Profile</span><i>→</i><span>Rice Allocation</span><i>→</i><span>Machine Command</span><i>→</i><span>Dispense KG</span>
+            </div>
+          </div>
+
+          <div class="architecture">
+            <h3>EV Platform Flow</h3>
+            <p>Focused on location visibility, station status, and battery swapping workflow.</p>
+            <div class="flow">
+              <span>Station</span><i>→</i><span>Battery Status</span><i>→</i><span>Cloud</span><i>→</i><span>Map Dashboard</span><i>→</i><span>User Action</span>
+            </div>
+          </div>
+
+          <div class="architecture">
+            <h3>Industrial Data Logger Flow</h3>
+            <p>Configuration layer for device setup, telemetry, and industrial monitoring pipelines.</p>
+            <div class="flow">
+              <span>Configurator</span><i>→</i><span>Data Logger</span><i>→</i><span>Telemetry</span><i>→</i><span>Storage</span><i>→</i><span>Reports</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -336,51 +1122,201 @@
       <div class="container">
         <div class="section-head">
           <h2>Technical Expertise</h2>
-          <p>End-to-end capability across AI analytics, connected devices, backend services, cloud deployment, dashboards, and industrial integration.</p>
+          <p>
+            End-to-end capability across AI analytics, connected devices, backend services,
+            cloud deployment, dashboards, and industrial integration.
+          </p>
         </div>
+
         <div class="grid-3">
-          <div class="card"><div class="icon">🤖</div><h3>AI & Analytics</h3><p>Computer vision, predictive analytics, automation decision support, monitoring intelligence, and AI-enabled dashboards.</p><div class="tags"><span class="tag">AI</span><span class="tag">Python</span><span class="tag">Computer Vision</span></div></div>
-          <div class="card"><div class="icon">🌐</div><h3>Enterprise Web</h3><p>Full-stack applications with clean interfaces, database-backed workflows, APIs, reports, and operational dashboards.</p><div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">MySQL</span></div></div>
-          <div class="card"><div class="icon">📡</div><h3>IoT & Industrial</h3><p>Device integration, sensors, data loggers, PLC connectivity, MQTT, Modbus, telemetry, and monitoring systems.</p><div class="tags"><span class="tag">MQTT</span><span class="tag">Modbus</span><span class="tag">PLC</span></div></div>
+          <div class="card">
+            <div class="icon">🤖</div>
+            <h3>AI & Analytics</h3>
+            <p>Computer vision, predictive analytics, automation decision support, monitoring intelligence, and AI-enabled dashboards.</p>
+            <div class="tags">
+              <span class="tag">AI</span>
+              <span class="tag">Python</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Enterprise Web</h3>
+            <p>Full-stack applications with clean interfaces, database-backed workflows, APIs, reports, and operational dashboards.</p>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon">📡</div>
+            <h3>IoT & Industrial</h3>
+            <p>Device integration, sensors, data loggers, PLC connectivity, MQTT, Modbus, telemetry, and monitoring systems.</p>
+            <div class="tags">
+              <span class="tag">MQTT</span>
+              <span class="tag">Modbus</span>
+              <span class="tag">PLC</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-head"><h2>Technology Stack</h2><p>Grouped by domain so technical readers can quickly understand your delivery range.</p></div>
+        <div class="section-head">
+          <h2>Technology Stack</h2>
+          <p>Grouped by domain so technical readers can quickly understand your delivery range.</p>
+        </div>
+
         <div class="tech-cloud">
-          <span class="tech">PHP</span><span class="tech">JavaScript</span><span class="tech">Python</span><span class="tech">MySQL</span><span class="tech">PostgreSQL</span><span class="tech">MSSQL</span><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">Bootstrap</span><span class="tech">REST API</span><span class="tech">MQTT</span><span class="tech">Modbus</span><span class="tech">PLC</span><span class="tech">Linux</span><span class="tech">Docker</span><span class="tech">Git</span><span class="tech">IoT Sensors</span><span class="tech">Dashboards</span>
+          <span class="tech">PHP</span>
+          <span class="tech">JavaScript</span>
+          <span class="tech">Python</span>
+          <span class="tech">MySQL</span>
+          <span class="tech">PostgreSQL</span>
+          <span class="tech">MSSQL</span>
+          <span class="tech">HTML</span>
+          <span class="tech">CSS</span>
+          <span class="tech">Bootstrap</span>
+          <span class="tech">REST API</span>
+          <span class="tech">MQTT</span>
+          <span class="tech">Modbus</span>
+          <span class="tech">PLC</span>
+          <span class="tech">Linux</span>
+          <span class="tech">Docker</span>
+          <span class="tech">Git</span>
+          <span class="tech">IoT Sensors</span>
+          <span class="tech">Dashboards</span>
         </div>
       </div>
     </section>
 
     <section id="experience">
       <div class="container">
-        <div class="section-head"><h2>Professional Experience</h2><p>Projects categorized by company for clearer career storytelling and stronger portfolio positioning.</p></div>
-        <div class="experience"><div><div class="company">Gadang Works / SIT</div><div class="role">Senior Software AI Developer</div></div><div><h3>AI, smart city, and enterprise platform development</h3><p>Developed and delivered intelligent monitoring platforms, smart infrastructure systems, and AI-powered dashboards.</p><ul><li>AI Dashcam Monitoring for fleet and driver behavior visibility.</li><li>Smart City EV Charging and station monitoring platforms.</li><li>Smart Waste Bin Tracker with operational dashboard.</li><li>Fleet Management System for vehicle tracking and monitoring.</li><li>Financial AI System and enterprise analytics dashboards.</li></ul></div></div>
-        <div class="experience"><div><div class="company">PICORP</div><div class="role">Software Developer</div></div><div><h3>Industrial IoT and smart farming systems</h3><p>Built tools and dashboards for product configuration, data logger setup, and agriculture monitoring.</p><ul><li>IOScout Configurator for in-house data logger products.</li><li>Smart Farming Dashboard for fig farm monitoring.</li><li>Worked with sensor data, device configuration, and operational reporting.</li></ul></div></div>
-        <div class="experience"><div><div class="company">MPM</div><div class="role">Software Developer</div></div><div><h3>Automation systems for community and EV use cases</h3><p>Developed practical systems connecting hardware, databases, RFID, dashboards, and user workflows.</p><ul><li>Smart Rice Machine for Asnaf during COVID-19 NGO aid distribution.</li><li>RFID-based registration, allocation checking, and rice dispensing flow.</li><li>EV Battery Swap Dashboard with station location and battery swap visibility.</li></ul></div></div>
+        <div class="section-head">
+          <h2>Professional Experience</h2>
+          <p>Projects categorized by company for clearer career storytelling and stronger portfolio positioning.</p>
+        </div>
+
+        <div class="experience">
+          <div>
+            <div class="company">Gadang Works / SIT</div>
+            <div class="role">Senior Software AI Developer</div>
+          </div>
+
+          <div>
+            <h3>AI, smart city, and enterprise platform development</h3>
+            <p>Developed and delivered intelligent monitoring platforms, smart infrastructure systems, and AI-powered dashboards.</p>
+            <ul>
+              <li>AI Dashcam Monitoring for fleet and driver behavior visibility.</li>
+              <li>Smart City EV Charging and station monitoring platforms.</li>
+              <li>Smart Waste Bin Tracker with operational dashboard.</li>
+              <li>Fleet Management System for vehicle tracking and monitoring.</li>
+              <li>Financial AI System and enterprise analytics dashboards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience">
+          <div>
+            <div class="company">PICORP</div>
+            <div class="role">Software Developer</div>
+          </div>
+
+          <div>
+            <h3>Industrial IoT and smart farming systems</h3>
+            <p>Built tools and dashboards for product configuration, data logger setup, and agriculture monitoring.</p>
+            <ul>
+              <li>IOScout Configurator for in-house data logger products.</li>
+              <li>Smart Farming Dashboard for fig farm monitoring.</li>
+              <li>Worked with sensor data, device configuration, and operational reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience">
+          <div>
+            <div class="company">MPM</div>
+            <div class="role">Software Developer</div>
+          </div>
+
+          <div>
+            <h3>Automation systems for community and EV use cases</h3>
+            <p>Developed practical systems connecting hardware, databases, RFID, dashboards, and user workflows.</p>
+            <ul>
+              <li>Smart Rice Machine for Asnaf during COVID-19 NGO aid distribution.</li>
+              <li>RFID-based registration, allocation checking, and rice dispensing flow.</li>
+              <li>EV Battery Swap Dashboard with station location and battery swap visibility.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-head"><h2>Career Timeline</h2><p>A progression from hardware-connected software systems to AI-powered enterprise platforms.</p></div>
+        <div class="section-head">
+          <h2>Career Timeline</h2>
+          <p>A progression from hardware-connected software systems to AI-powered enterprise platforms.</p>
+        </div>
+
         <div class="timeline">
-          <div class="timeline-item"><span class="dot"></span><div class="timeline-card"><div class="year">MPM</div><div><h3>RFID Automation + EV Dashboard</h3><p>Smart Rice Machine for Asnaf and EV Battery Swap Dashboard.</p></div></div></div>
-          <div class="timeline-item"><span class="dot"></span><div class="timeline-card"><div class="year">PICORP</div><div><h3>Industrial IoT + Smart Farming</h3><p>IOScout Configurator and Smart Farming Dashboard for fig farm monitoring.</p></div></div></div>
-          <div class="timeline-item"><span class="dot"></span><div class="timeline-card"><div class="year">SIT</div><div><h3>AI + Smart City Platforms</h3><p>AI Dashcam, Smart Waste, EV Charging, Fleet Management, Financial AI, and smart city platforms.</p></div></div></div>
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div class="timeline-card">
+              <div class="year">MPM</div>
+              <div>
+                <h3>RFID Automation + EV Dashboard</h3>
+                <p>Smart Rice Machine for Asnaf and EV Battery Swap Dashboard.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div class="timeline-card">
+              <div class="year">PICORP</div>
+              <div>
+                <h3>Industrial IoT + Smart Farming</h3>
+                <p>IOScout Configurator and Smart Farming Dashboard for fig farm monitoring.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div class="timeline-card">
+              <div class="year">SIT</div>
+              <div>
+                <h3>AI + Smart City Platforms</h3>
+                <p>AI Dashcam, Smart Waste, EV Charging, Fleet Management, Financial AI, and smart city platforms.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="resume">
       <div class="container">
-        <div class="section-head"><h2>Resume</h2><p>Recruiters can view the resume directly or download the PDF.</p></div>
+        <div class="section-head">
+          <h2>Resume</h2>
+          <p>Recruiters can view the resume directly or download the PDF.</p>
+        </div>
+
         <div class="resume-card">
-          <div class="hero-actions"><a class="btn primary" href="doc/Resume.pdf">Download Resume →</a><a class="btn" href="doc/Resume.pdf" target="_blank">Open in New Tab</a></div>
-          <div class="resume-frame"><iframe src="doc/Resume.pdf" title="Resume PDF"></iframe></div>
+          <div class="hero-actions">
+            <a class="btn primary" href="doc/Resume.pdf">Download Resume →</a>
+            <a class="btn" href="doc/Resume.pdf" target="_blank">Open in New Tab</a>
+          </div>
+
+          <div class="resume-frame">
+            <iframe src="doc/Resume.pdf" title="Resume PDF"></iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -388,8 +1324,15 @@
     <section id="contact">
       <div class="container">
         <div class="contact-box">
-          <div><h2>Let’s build intelligent systems.</h2><p>Available for AI, AIoT, enterprise dashboard, smart city, industrial IoT, and full-stack software opportunities.</p></div>
-          <div class="hero-actions"><a class="btn" href="https://www.linkedin.com/in/muhammad-ikhwan-abdul-manab-484723182/">LinkedIn</a><a class="btn" href="https://github.com/ikhwanmanab">GitHub</a></div>
+          <div>
+            <h2>Let’s build intelligent systems.</h2>
+            <p>Available for AI, AIoT, enterprise dashboard, smart city, industrial IoT, and full-stack software opportunities.</p>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://www.linkedin.com/in/muhammad-ikhwan-abdul-manab-484723182/">LinkedIn</a>
+            <a class="btn" href="https://github.com/ikhwanmanab">GitHub</a>
+          </div>
         </div>
       </div>
     </section>
