@@ -1,1 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Smart Rice Machine for Asnaf | Case Study</title>
+  <meta name="description" content="Case study for Smart Rice Machine for Asnaf, an RFID-based automated rice dispensing system developed during COVID-19 for NGO aid distribution." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f6f9ff;
+      --surface: rgba(255,255,255,.84);
+      --surface-strong: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15,23,42,.09);
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --green: #16a34a;
+      --orange: #f97316;
+      --shadow: 0 24px 70px rgba(15,23,42,.10);
+      --shadow-hover: 0 34px 90px rgba(37,99,235,.18);
+      --radius: 28px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(37,99,235,.18), transparent 32rem),
+        radial-gradient(circle at 86% 16%, rgba(6,182,212,.16), transparent 30rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 46%, #eef5ff 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(22px);
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.4px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 16px 36px rgba(37,99,235,.28);
+      transition: transform .25s var(--ease);
+    }
+
+    .brand:hover .brand-mark {
+      transform: rotate(-8deg) scale(1.06);
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .links a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: .22s var(--ease);
+    }
+
+    .links a:hover {
+      color: var(--blue);
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 84px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: #1e40af;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 12px 32px rgba(15,23,42,.06);
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin: 24px 0 20px;
+    }
+
+    .gradient {
+      background: linear-gradient(135deg, #1d4ed8, #0891b2, #4338ca);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: white;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(15,23,42,.08);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,99,235,.22);
+    }
+
+    .btn.primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border: 0;
+    }
+
+    .case-card,
+    .metric,
+    .info-card,
+    .flow-card,
+    .role-card,
+    .impact-card,
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
+    }
+
+    .case-card:hover,
+    .metric:hover,
+    .info-card:hover,
+    .flow-card:hover,
+    .role-card:hover,
+    .impact-card:hover,
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,99,235,.22);
+      background: rgba(255,255,255,.94);
+    }
+
+    .case-card {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-card:before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      right: -90px;
+      top: -90px;
+      background: rgba(37,99,235,.12);
+    }
+
+    .mock-device {
+      position: relative;
+      min-height: 430px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(37,99,235,.10), rgba(6,182,212,.16)),
+        linear-gradient(180deg, #ffffff, #eef6ff);
+      border: 1px solid rgba(255,255,255,.9);
+      padding: 28px;
+      display: grid;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    .machine {
+      width: min(300px, 100%);
+      margin: 0 auto;
+      border-radius: 30px;
+      background: #0f172a;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(15,23,42,.22);
+      position: relative;
+    }
+
+    .machine-screen {
+      height: 130px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d4ed8, #06b6d4);
+      color: white;
+      padding: 18px;
+    }
+
+    .machine-screen b {
+      display: block;
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .machine-screen span {
+      display: block;
+      margin-top: 8px;
+      font-weight: 800;
+      opacity: .85;
+    }
+
+    .rfid {
+      height: 90px;
+      margin-top: 14px;
+      border-radius: 20px;
+      background: #f8fafc;
+      display: grid;
+      place-items: center;
+      color: #1e40af;
+      font-weight: 900;
+    }
+
+    .drawer {
+      height: 64px;
+      margin-top: 14px;
+      border-radius: 18px;
+      background: #e2e8f0;
+      display: grid;
+      place-items: center;
+      color: #334155;
+      font-weight: 900;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 590px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .metric {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-weight: 800;
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-card,
+    .flow-card,
+    .role-card,
+    .impact-card,
+    .gallery-card {
+      padding: 24px;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      color: var(--blue);
+      font-size: 25px;
+      margin-bottom: 16px;
+      transition: transform .25s var(--ease);
+    }
+
+    .info-card:hover .icon,
+    .role-card:hover .icon,
+    .impact-card:hover .icon {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -.5px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #eef6ff;
+      color: #1e40af;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .flow span {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #eff6ff;
+      color: #1e40af;
+      font-size: 13px;
+      font-weight: 900;
+      transition: .22s var(--ease);
+    }
+
+    .flow span:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(37,99,235,.14);
+      background: #ffffff;
+    }
+
+    .flow i {
+      color: var(--muted);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .process {
+      counter-reset: process;
+      display: grid;
+      gap: 16px;
+    }
+
+    .process-step {
+      counter-increment: process;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      transition: .22s var(--ease);
+    }
+
+    .process-step:hover {
+      transform: translateX(8px);
+      border-color: rgba(37,99,235,.22);
+      box-shadow: 0 18px 48px rgba(37,99,235,.12);
+    }
+
+    .process-step:before {
+      content: counter(process);
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(37,99,235,.22);
+    }
+
+    .process-step h3 {
+      margin-bottom: 6px;
+    }
+
+    .process-step p {
+      margin: 0;
+    }
+
+    .impact-card {
+      background:
+        radial-gradient(circle at top right, rgba(22,163,74,.13), transparent 16rem),
+        rgba(255,255,255,.84);
+    }
+
+    .impact-card strong {
+      display: block;
+      font-size: 30px;
+      color: var(--green);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .gallery-placeholder {
+      height: 220px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(37,99,235,.12), rgba(6,182,212,.15)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0 10px, rgba(255,255,255,.15) 10px 20px);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #1e40af;
+      font-weight: 900;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.9);
+    }
+
+    .contact-box {
+      padding: 38px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #0891b2);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box:before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      right: -90px;
+      top: -90px;
+      background: rgba(255,255,255,.10);
+    }
+
+    .contact-box h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+
+    .contact-box p {
+      color: rgba(255,255,255,.76);
+      margin: 10px 0 0;
+    }
+
+    .contact-box .btn {
+      color: #0f172a;
+      position: relative;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .reveal {
+      animation: rise .7s var(--ease) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .links {
+        display: none;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .grid-3,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .mock-device {
+        min-height: 360px;
+        padding: 18px;
+      }
+
+      .process-step {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark">IM</span>
+        <span>Ikhwan Manab</span>
+      </a>
+
+      <div class="links">
+        <a href="../index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#flow">System Flow</a>
+        <a href="#role">My Role</a>
+        <a href="#impact">Impact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero reveal">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">🍚 RFID • IoT • Community Automation</span>
+          <h1>Smart Rice Machine <span class="gradient">for Asnaf</span></h1>
+          <p class="lead">
+            A COVID-19 NGO project that automated rice aid distribution using RFID cards,
+            server-side beneficiary allocation, and a connected dispensing machine.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#flow">View System Flow →</a>
+            <a class="btn" href="../index.html#projects">Back to Portfolio</a>
+            <a class="btn" href="../doc/Resume.pdf">Download Resume</a>
+          </div>
+        </div>
+
+        <aside class="case-card">
+          <div class="mock-device">
+            <div class="machine">
+              <div class="machine-screen">
+                <b>5 KG</b>
+                <span>Rice allocation approved</span>
+              </div>
+
+              <div class="rfid">RFID CARD SCANNED</div>
+              <div class="drawer">DRAWER OPEN</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container metrics">
+        <div class="metric">
+          <strong>RFID</strong>
+          <span>Recipient identity and access control</span>
+        </div>
+
+        <div class="metric">
+          <strong>Server</strong>
+          <span>Allocation validation and data checking</span>
+        </div>
+
+        <div class="metric">
+          <strong>IoT</strong>
+          <span>Machine instruction and dispensing control</span>
+        </div>
+
+        <div class="metric">
+          <strong>COVID-19</strong>
+          <span>NGO aid distribution use case</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-head">
+          <h2>Project Overview</h2>
+          <p>
+            The system was created to make rice distribution more controlled,
+            traceable, and automated for eligible Asnaf recipients.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <div class="icon">🎯</div>
+            <h3>Problem</h3>
+            <p>
+              Rice aid distribution required manual checking, manual allocation,
+              and physical control. This created operational friction, especially during COVID-19.
+            </p>
+            <ul>
+              <li>Manual recipient verification</li>
+              <li>Manual rice allocation checking</li>
+              <li>Limited automation at dispensing point</li>
+              <li>Harder to track who already received aid</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">✅</div>
+            <h3>Solution</h3>
+            <p>
+              Each Asnaf recipient received an RFID card. The machine reads the card,
+              checks the server allocation, then dispenses the approved rice quantity.
+            </p>
+            <ul>
+              <li>Admin registers recipient profile</li>
+              <li>System assigns rice allocation in kilograms</li>
+              <li>RFID card links recipient to allocation</li>
+              <li>Machine dispenses rice based on server instruction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="container">
+        <div class="section-head">
+          <h2>System Flow</h2>
+          <p>
+            This flow explains how the RFID card, server, database, and machine work together.
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <h3>End-to-End Architecture</h3>
+          <p>
+            The machine does not simply dispense rice blindly. It checks recipient data and allocation first.
+          </p>
+
+          <div class="flow">
+            <span>Admin Registration</span>
+            <i>→</i>
+            <span>Recipient Profile</span>
+            <i>→</i>
+            <span>RFID Card</span>
+            <i>→</i>
+            <span>Machine Scan</span>
+            <i>→</i>
+            <span>Server Check</span>
+            <i>→</i>
+            <span>KG Allocation</span>
+            <i>→</i>
+            <span>Dispense Rice</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>User Journey</h2>
+          <p>
+            The process is simple for recipients but controlled at the backend.
+          </p>
+        </div>
+
+        <div class="process">
+          <div class="process-step">
+            <div>
+              <h3>Admin Registers Asnaf</h3>
+              <p>Admin records recipient information and assigns the rice allocation in the system.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div>
+              <h3>Recipient Receives RFID Card</h3>
+              <p>Each recipient receives a unique RFID card linked to their profile and allocation.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div>
+              <h3>Recipient Scans Card at Machine</h3>
+              <p>The smart machine reads the RFID card and sends the request to the server.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div>
+              <h3>Server Validates Allocation</h3>
+              <p>The backend checks eligibility, allocation quantity, and whether the recipient can collect.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div>
+              <h3>Machine Dispenses Rice</h3>
+              <p>The server gives instruction to the machine, and the drawer opens after dispensing the allocated rice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="role">
+      <div class="container">
+        <div class="section-head">
+          <h2>My Role</h2>
+          <p>
+            This project required both software and hardware-connected system thinking.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="role-card">
+            <div class="icon">🧩</div>
+            <h3>System Design</h3>
+            <p>Designed the operational logic between admin registration, RFID identity, server allocation, and machine dispensing.</p>
+            <div class="tags">
+              <span class="tag">System Flow</span>
+              <span class="tag">Logic Design</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="icon">🗄️</div>
+            <h3>Backend & Database</h3>
+            <p>Built the backend logic to store recipient information, rice allocation, and collection validation.</p>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">API</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="icon">📡</div>
+            <h3>Machine Integration</h3>
+            <p>Connected the server-side instruction flow with the machine behavior for controlled dispensing.</p>
+            <div class="tags">
+              <span class="tag">RFID</span>
+              <span class="tag">IoT</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Business & Community Impact</h2>
+          <p>
+            The main value was not just technical. The system helped make aid distribution more reliable and controlled.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="impact-card">
+            <strong>Controlled</strong>
+            <p>Rice was dispensed based on registered allocation instead of uncontrolled manual distribution.</p>
+          </div>
+
+          <div class="impact-card">
+            <strong>Traceable</strong>
+            <p>Each recipient used an RFID card, making the collection process easier to validate and track.</p>
+          </div>
+
+          <div class="impact-card">
+            <strong>Automated</strong>
+            <p>The machine reduced manual handling by reading card data, checking allocation, and dispensing rice automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <h2>Gallery Placeholder</h2>
+          <p>
+            Later, add real photos of the machine, RFID card, dashboard, and admin screen.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="gallery-card">
+            <div class="gallery-placeholder">Add machine photo here</div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-placeholder">Add RFID card / scanner photo here</div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-placeholder">Add admin dashboard screenshot here</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Back to full portfolio.</h2>
+            <p>View more projects across AI monitoring, smart city, industrial IoT, and enterprise dashboards.</p>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn" href="../index.html">Portfolio Home</a>
+            <a class="btn" href="../doc/Resume.pdf">Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Muhammad Ikhwan Abdul Manab. Smart Rice Machine case study.</footer>
+</body>
+</html>
