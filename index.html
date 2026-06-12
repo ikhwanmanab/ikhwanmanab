@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Ikhwan Abdul Manab | Senior Software AI Developer</title>
+  <meta name="description" content="Portfolio of Muhammad Ikhwan Abdul Manab, Senior Software AI Developer specializing in AI, AIoT, Industrial IoT, Smart City, and enterprise software systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: rgba(255,255,255,.82);
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15,23,42,.09);
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --indigo: #4f46e5;
+      --green: #16a34a;
+      --shadow: 0 24px 70px rgba(15,23,42,.10);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.16), transparent 32rem),
+        radial-gradient(circle at 80% 10%, rgba(6,182,212,.16), transparent 28rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 48%, #eef4ff 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(22px);
+      background: rgba(255,255,255,.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      height: 76px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: white; font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 16px 36px rgba(37,99,235,.28);
+    }
+    .links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-weight: 700; font-size: 14px; }
+    .links a:hover { color: var(--blue); }
+
+    .hero { padding: 86px 0 54px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(255,255,255,.74); color: #1e40af; font-weight: 800; font-size: 13px;
+      box-shadow: 0 12px 32px rgba(15,23,42,.06);
+    }
+    h1 { font-size: clamp(44px, 7vw, 82px); line-height: .95; letter-spacing: -4px; margin: 24px 0 20px; }
+    .gradient { background: linear-gradient(135deg, #1d4ed8, #0891b2, #4338ca); -webkit-background-clip: text; color: transparent; }
+    .lead { font-size: 20px; line-height: 1.75; color: var(--muted); max-width: 760px; margin: 0 0 30px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      border: 1px solid var(--line); padding: 14px 18px; border-radius: 16px;
+      background: white; font-weight: 900; box-shadow: 0 14px 34px rgba(15,23,42,.08);
+      transition: .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { color: white; background: linear-gradient(135deg, var(--blue), var(--cyan)); border: 0; }
+
+    .portrait-card {
+      position: relative; padding: 18px; border-radius: 36px; background: var(--card);
+      border: 1px solid rgba(255,255,255,.9); box-shadow: var(--shadow); overflow: hidden;
+    }
+    .portrait-card:before {
+      content: ""; position: absolute; inset: -90px -80px auto auto; width: 220px; height: 220px;
+      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(6,182,212,.2)); border-radius: 999px;
+    }
+    .portrait {
+      position: relative; height: 470px; border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,.08), rgba(15,23,42,.02)),
+        url('images/passportfoto.png') center/cover no-repeat,
+        linear-gradient(135deg, #dbeafe, #f8fafc);
+      display: flex; align-items: end; padding: 22px;
+    }
+    .floating {
+      width: 100%; border: 1px solid rgba(255,255,255,.75); background: rgba(255,255,255,.76);
+      backdrop-filter: blur(18px); border-radius: 22px; padding: 18px;
+    }
+    .floating b { display: block; font-size: 18px; }
+    .floating span { color: var(--muted); font-weight: 700; font-size: 13px; }
+
+    section { padding: 58px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 26px; }
+    .section-head h2 { margin: 0; font-size: clamp(30px, 4vw, 46px); letter-spacing: -2px; }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .stat, .card, .project, .experience {
+      background: var(--card); border: 1px solid rgba(255,255,255,.86); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .stat { padding: 24px; }
+    .stat strong { display: block; font-size: 38px; letter-spacing: -2px; }
+    .stat span { color: var(--muted); font-weight: 700; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 24px; }
+    .icon {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
+      background: #eff6ff; color: var(--blue); font-size: 22px; margin-bottom: 16px;
+    }
+    .card h3, .project h3, .experience h3 { margin: 0 0 10px; font-size: 21px; }
+    .card p, .project p, .experience p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag { padding: 8px 10px; border-radius: 999px; background: #eef6ff; color: #1e40af; font-size: 12px; font-weight: 900; }
+
+    .experience { padding: 26px; margin-bottom: 18px; display: grid; grid-template-columns: 260px 1fr; gap: 26px; }
+    .company { font-weight: 900; font-size: 22px; }
+    .role { color: var(--blue); font-weight: 900; margin-top: 6px; }
+    ul { margin: 14px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.75; }
+
+    .project { overflow: hidden; }
+    .project-top { height: 150px; background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(6,182,212,.16)); display: grid; place-items: center; font-size: 44px; }
+    .project-body { padding: 24px; }
+    .impact { margin-top: 16px; padding: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; color: #166534; font-weight: 800; line-height: 1.55; }
+
+    .timeline { position: relative; display: grid; gap: 18px; }
+    .timeline:before { content: ""; position: absolute; left: 20px; top: 10px; bottom: 10px; width: 2px; background: #bfdbfe; }
+    .timeline-item { position: relative; padding-left: 58px; }
+    .dot { position: absolute; left: 8px; top: 8px; width: 26px; height: 26px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--cyan)); box-shadow: 0 12px 28px rgba(37,99,235,.25); }
+
+    .contact-box {
+      padding: 36px; border-radius: 34px; background: linear-gradient(135deg, #0f172a, #1e3a8a, #0891b2); color: white;
+      display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; box-shadow: var(--shadow);
+    }
+    .contact-box p { color: rgba(255,255,255,.76); line-height: 1.7; margin: 10px 0 0; }
+    .contact-box .btn { color: #0f172a; }
+    footer { padding: 34px 0; color: var(--muted); text-align: center; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .experience, .contact-box { grid-template-columns: 1fr; }
+      .grid-3, .stats { grid-template-columns: repeat(2, 1fr); }
+      .links { display: none; }
+      .portrait { height: 390px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .grid-3, .stats { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -2px; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand"><span class="brand-mark">IM</span><span>Ikhwan Manab</span></a>
+      <div class="links">
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">🚀 Senior Software AI Developer</span>
+          <h1>Building <span class="gradient">AI, AIoT & smart infrastructure</span> platforms.</h1>
+          <p class="lead">I design and develop enterprise dashboards, IoT platforms, AI monitoring systems, industrial integrations, and smart city solutions — from concept and architecture to deployment.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Featured Projects</a>
+            <a class="btn" href="doc/resume.pdf">Download Resume</a>
+            <a class="btn" href="https://github.com/ikhwanmanab">GitHub Profile</a>
+          </div>
+        </div>
+        <aside class="portrait-card">
+          <div class="portrait">
+            <div class="floating">
+              <b>Muhammad Ikhwan Abdul Manab</b>
+              <span>AI • IoT • Full Stack • Smart City • Industrial Systems</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container stats">
+        <div class="stat"><strong>5+</strong><span>Years Experience</span></div>
+        <div class="stat"><strong>20+</strong><span>Projects Delivered</span></div>
+        <div class="stat"><strong>AIoT</strong><span>Specialist</span></div>
+        <div class="stat"><strong>Full</strong><span>Stack Delivery</span></div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="container">
+        <div class="section-head">
+          <h2>Technical Expertise</h2>
+          <p>Strong end-to-end capability across AI analytics, connected devices, backend services, cloud deployment, dashboards, and industrial system integration.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><div class="icon">🤖</div><h3>AI & Analytics</h3><p>Computer vision, predictive analytics, automation decision support, monitoring intelligence, and AI-enabled dashboards.</p><div class="tags"><span class="tag">AI</span><span class="tag">Python</span><span class="tag">Computer Vision</span></div></div>
+          <div class="card"><div class="icon">🌐</div><h3>Enterprise Web</h3><p>Full-stack applications with clean interfaces, database-backed workflows, APIs, reports, and operational dashboards.</p><div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">MySQL</span></div></div>
+          <div class="card"><div class="icon">📡</div><h3>IoT & Industrial</h3><p>Device integration, sensors, data loggers, PLC connectivity, MQTT, Modbus, telemetry, and monitoring systems.</p><div class="tags"><span class="tag">MQTT</span><span class="tag">Modbus</span><span class="tag">PLC</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <h2>Professional Experience</h2>
+          <p>Projects categorized by company for clearer career storytelling and stronger portfolio positioning.</p>
+        </div>
+
+        <div class="experience">
+          <div><div class="company">Gadang Works / SIT</div><div class="role">Senior Software AI Developer</div></div>
+          <div>
+            <h3>AI, smart city, and enterprise platform development</h3>
+            <p>Developed and delivered intelligent monitoring platforms, smart infrastructure systems, and AI-powered dashboards.</p>
+            <ul>
+              <li>AI Dashcam Monitoring for fleet and driver behavior visibility.</li>
+              <li>Smart City EV Charging and station monitoring platforms.</li>
+              <li>Smart Waste Bin Tracker with operational dashboard.</li>
+              <li>Fleet Management System for vehicle tracking and monitoring.</li>
+              <li>Financial AI System and enterprise analytics dashboards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience">
+          <div><div class="company">PICORP</div><div class="role">Software Developer</div></div>
+          <div>
+            <h3>Industrial IoT and smart farming systems</h3>
+            <p>Built tools and dashboards for product configuration, data logger setup, and agriculture monitoring.</p>
+            <ul>
+              <li>IOScout Configurator for in-house data logger products.</li>
+              <li>Smart Farming Dashboard for fig farm monitoring.</li>
+              <li>Worked with sensor data, device configuration, and operational reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience">
+          <div><div class="company">MPM</div><div class="role">Software Developer</div></div>
+          <div>
+            <h3>Automation systems for community and EV use cases</h3>
+            <p>Developed practical systems connecting hardware, databases, RFID, dashboards, and user workflows.</p>
+            <ul>
+              <li>Smart Rice Machine for Asnaf during COVID-19 NGO aid distribution.</li>
+              <li>RFID-based registration, allocation checking, and rice dispensing flow.</li>
+              <li>EV Battery Swap Dashboard with station location and battery swap visibility.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured Projects</h2>
+          <p>Selected projects showing AI, IoT, dashboards, smart infrastructure, and business-impact delivery.</p>
+        </div>
+        <div class="grid-3">
+          <article class="project"><div class="project-top">🚘</div><div class="project-body"><h3>AI Dashcam Monitoring</h3><p>AI-powered monitoring solution for fleet safety, driver behavior visibility, and operational supervision.</p><div class="impact">Impact: Improved fleet visibility and safety monitoring.</div><div class="tags"><span class="tag">AI</span><span class="tag">Dashboard</span><span class="tag">Fleet</span></div></div></article>
+          <article class="project"><div class="project-top">🍚</div><div class="project-body"><h3>Smart Rice Machine for Asnaf</h3><p>RFID-based rice aid dispensing system connected to a server-side allocation system.</p><div class="impact">Impact: Automated aid distribution during COVID-19.</div><div class="tags"><span class="tag">RFID</span><span class="tag">IoT</span><span class="tag">PHP</span></div></div></article>
+          <article class="project"><div class="project-top">🌱</div><div class="project-body"><h3>Smart Farming Dashboard</h3><p>Real-time fig farm dashboard for crop, environment, and sensor monitoring.</p><div class="impact">Impact: Better farm visibility and digital monitoring.</div><div class="tags"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Dashboard</span></div></div></article>
+          <article class="project"><div class="project-top">⚡</div><div class="project-body"><h3>EV Charging Platform</h3><p>Dashboard for EV charging and battery swap station visibility, location discovery, and operational monitoring.</p><div class="impact">Impact: Improved EV station accessibility and monitoring.</div><div class="tags"><span class="tag">EV</span><span class="tag">GIS</span><span class="tag">API</span></div></div></article>
+          <article class="project"><div class="project-top">🗑️</div><div class="project-body"><h3>Smart Waste Bin Tracker</h3><p>Smart waste monitoring platform for tracking bin status, operations, and city service visibility.</p><div class="impact">Impact: Supports cleaner and smarter city operations.</div><div class="tags"><span class="tag">Smart City</span><span class="tag">IoT</span><span class="tag">Tracking</span></div></div></article>
+          <article class="project"><div class="project-top">🏭</div><div class="project-body"><h3>IOScout Configurator</h3><p>Configurator for in-house industrial data logger products, streamlining setup and device configuration.</p><div class="impact">Impact: Faster product setup and technical configuration.</div><div class="tags"><span class="tag">Data Logger</span><span class="tag">Industrial IoT</span><span class="tag">Tooling</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Career Timeline</h2>
+          <p>A clear progression from hardware-connected software systems to AI-powered enterprise platforms.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><span class="dot"></span><div class="card"><h3>MPM</h3><p>Smart Rice Machine for Asnaf and EV Battery Swap Dashboard.</p></div></div>
+          <div class="timeline-item"><span class="dot"></span><div class="card"><h3>PICORP</h3><p>IOScout Configurator and Smart Farming Dashboard for fig farm monitoring.</p></div></div>
+          <div class="timeline-item"><span class="dot"></span><div class="card"><h3>Gadang Works / SIT</h3><p>AI Dashcam, Smart Waste, EV Charging, Fleet Management, Financial AI, and smart city platforms.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Let’s build intelligent systems.</h2>
+            <p>Available for AI, AIoT, enterprise dashboard, smart city, industrial IoT, and full-stack software opportunities.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn" href="https://www.linkedin.com/in/muhammad-ikhwan-abdul-manab-484723182/">LinkedIn</a>
+            <a class="btn" href="https://github.com/ikhwanmanab">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Muhammad Ikhwan Abdul Manab. Built for GitHub Pages.</footer>
+</body>
+</html>
