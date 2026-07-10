@@ -124,6 +124,12 @@
       transform: translateY(-1px);
     }
 
+    .links .site-work-link {
+      color: #1d4ed8;
+      background: linear-gradient(135deg, #eff6ff, #ecfeff);
+      border: 1px solid rgba(37,99,235,.12);
+    }
+
     .hero {
       padding: 84px 0 42px;
     }
@@ -514,6 +520,167 @@
       position: relative;
     }
 
+    .field-work {
+      padding: 32px;
+      border-radius: 34px;
+      color: white;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(34,211,238,.22), transparent 24rem),
+        linear-gradient(135deg, #07152e 0%, #102d61 58%, #075985 100%);
+      box-shadow: 0 30px 80px rgba(15,45,97,.24);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .field-work:before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      left: -100px;
+      bottom: -170px;
+      border-radius: 50%;
+      border: 44px solid rgba(255,255,255,.05);
+    }
+
+    .field-work-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .field-work-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .field-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #a5f3fc;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+
+    .field-work h3 {
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+    }
+
+    .field-work-copy > p {
+      margin: 0;
+      color: rgba(255,255,255,.72);
+      line-height: 1.75;
+    }
+
+    .field-list {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255,255,255,.88);
+    }
+
+    .field-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.55;
+    }
+
+    .field-list li:before {
+      content: "✓";
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #082f49;
+      background: #67e8f9;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .field-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .field-tags span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: #cffafe;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .field-gallery {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 12px;
+      min-height: 480px;
+    }
+
+    .field-shot {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 20px 46px rgba(0,0,0,.24);
+    }
+
+    .field-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+
+    .field-shot:first-child img {
+      object-position: center;
+    }
+
+    .field-shot:hover img {
+      transform: scale(1.045);
+    }
+
+    .field-shot figcaption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 12px 13px;
+      border-radius: 14px;
+      color: white;
+      background: rgba(6,18,43,.72);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(14px);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
     .project-top {
       height: 170px;
       background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(6,182,212,.16));
@@ -768,7 +935,8 @@
       .hero-grid,
       .experience,
       .contact-box,
-      .architecture-grid {
+      .architecture-grid,
+      .field-work-grid {
         grid-template-columns: 1fr;
       }
 
@@ -783,6 +951,10 @@
       }
 
       .portrait {
+        min-height: 430px;
+      }
+
+      .field-gallery {
         min-height: 430px;
       }
 
@@ -819,6 +991,24 @@
         grid-template-columns: 1fr;
       }
 
+      .field-work {
+        padding: 20px;
+        border-radius: 26px;
+      }
+
+      .field-gallery {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .field-shot {
+        min-height: 320px;
+      }
+
+      .field-shot:last-child {
+        min-height: 250px;
+      }
+
       .timeline-card {
         grid-template-columns: 1fr;
       }
@@ -841,6 +1031,7 @@
       <div class="links">
         <a href="#solutions">Solutions</a>
         <a href="#projects">Projects</a>
+        <a class="site-work-link" href="#site-work">Site Work</a>
         <a href="#architecture">Architecture</a>
         <a href="#experience">Experience</a>
         <a href="#resume">Resume</a>
@@ -1070,6 +1261,58 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="site-work">
+      <div class="container">
+        <div class="section-head">
+          <h2>On-Site AI Work</h2>
+          <p>
+            Field implementation turns an AI model into an operational system.
+            This work covered on-site testing, calibration, and real-world validation.
+          </p>
+        </div>
+
+        <article class="field-work">
+          <div class="field-work-grid">
+            <div class="field-work-copy">
+              <span class="field-kicker">✦ Airport Deployment</span>
+              <h3>AI Crowd Monitoring & People Counting</h3>
+              <p>
+                I worked on the AI development and site validation of a computer-vision system
+                for monitoring crowd flow in an airport environment. The solution detects and
+                tracks people across defined zones to support live occupancy and movement analysis.
+              </p>
+
+              <ul class="field-list">
+                <li>On-site camera positioning, scene testing, and detection validation</li>
+                <li>People counting across entrance, exit, and escalator movement zones</li>
+                <li>Trajectory tracking and live crowd-flow monitoring</li>
+                <li>Real-world tuning for changing movement and environmental conditions</li>
+              </ul>
+
+              <div class="field-tags">
+                <span>Computer Vision</span>
+                <span>People Detection</span>
+                <span>Object Tracking</span>
+                <span>Field Validation</span>
+              </div>
+            </div>
+
+            <div class="field-gallery" aria-label="Airport crowd monitoring field work">
+              <figure class="field-shot">
+                <img src="images/airport3.jpeg" alt="On-site airport camera positioning and field validation work" loading="lazy">
+                <figcaption>On-site scene testing and camera validation</figcaption>
+              </figure>
+
+              <figure class="field-shot">
+                <img src="images/airport4.jpeg" alt="AI people counter tracking crowd movement across defined zones" loading="lazy">
+                <figcaption>Live people counting, tracking, and movement-zone analysis</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
