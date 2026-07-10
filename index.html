@@ -634,9 +634,10 @@
 
     .field-gallery {
       display: grid;
-      grid-template-columns: .72fr 1.28fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, 235px);
       gap: 12px;
-      min-height: 480px;
+      min-height: 482px;
     }
 
     .field-shot {
@@ -955,7 +956,8 @@
       }
 
       .field-gallery {
-        min-height: 430px;
+        grid-template-rows: repeat(2, 220px);
+        min-height: 452px;
       }
 
       .section-head {
@@ -998,15 +1000,12 @@
 
       .field-gallery {
         grid-template-columns: 1fr;
+        grid-template-rows: none;
         min-height: auto;
       }
 
       .field-shot {
-        min-height: 320px;
-      }
-
-      .field-shot:last-child {
-        min-height: 250px;
+        min-height: 280px;
       }
 
       .timeline-card {
@@ -1302,8 +1301,18 @@
 
             <div class="field-gallery" aria-label="Airport crowd monitoring field work">
               <figure class="field-shot">
+                <img src="images/airport1.jpeg" alt="Airport crowd monitoring site inspection and camera coverage review" loading="lazy">
+                <figcaption>Airport site inspection and camera coverage review</figcaption>
+              </figure>
+
+              <figure class="field-shot">
+                <img src="images/airport2.jpeg" alt="On-site AI crowd monitoring testing in the airport environment" loading="lazy">
+                <figcaption>On-site AI testing in the live airport environment</figcaption>
+              </figure>
+
+              <figure class="field-shot">
                 <img src="images/airport3.jpeg" alt="On-site airport camera positioning and field validation work" loading="lazy">
-                <figcaption>On-site scene testing and camera validation</figcaption>
+                <figcaption>Camera positioning, scene testing, and field validation</figcaption>
               </figure>
 
               <figure class="field-shot">
