@@ -518,6 +518,94 @@
     .project {
       overflow: hidden;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-directory {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 34px;
+    }
+
+    .project-directory a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: #1e40af;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(37,99,235,.14);
+      box-shadow: 0 10px 28px rgba(15,23,42,.06);
+      font-size: 12px;
+      font-weight: 900;
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease);
+    }
+
+    .project-directory a:hover {
+      transform: translateY(-2px);
+      background: #eff6ff;
+      box-shadow: 0 14px 32px rgba(37,99,235,.13);
+    }
+
+    .project-groups {
+      display: grid;
+      gap: 44px;
+    }
+
+    .project-category {
+      scroll-margin-top: 104px;
+    }
+
+    .project-category-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .category-icon {
+      flex: 0 0 50px;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #dbeafe, #cffafe);
+      font-size: 24px;
+      box-shadow: 0 12px 30px rgba(37,99,235,.10);
+    }
+
+    .category-copy {
+      flex: 1;
+    }
+
+    .category-copy h3 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      letter-spacing: -.6px;
+    }
+
+    .category-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .category-count {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #1e40af;
+      background: #eff6ff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .field-work {
@@ -707,6 +795,9 @@
 
     .project-body {
       padding: 24px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
     }
 
     .project-meta {
@@ -750,7 +841,8 @@
     }
 
     .project-link {
-      margin-top: 16px;
+      margin-top: auto;
+      padding-top: 16px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -943,7 +1035,8 @@
 
       .grid-3,
       .stats,
-      .solutions-strip {
+      .solutions-strip,
+      .category-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -977,8 +1070,17 @@
       .grid-3,
       .grid-2,
       .stats,
-      .solutions-strip {
+      .solutions-strip,
+      .category-grid {
         grid-template-columns: 1fr;
+      }
+
+      .project-category-head {
+        align-items: flex-start;
+      }
+
+      .category-count {
+        display: none;
       }
 
       h1 {
@@ -1144,121 +1246,316 @@
     <section id="projects">
       <div class="container">
         <div class="section-head">
-          <h2>Featured Project Case Studies</h2>
+          <h2>Projects by Domain</h2>
           <p>
-            Each card shows problem, deployment context, technology, and business impact.
-            Hover the cards for a more polished experience.
+            A portfolio of production-focused AI, IoT, smart infrastructure, agriculture,
+            mobility, and automation systems developed for real operational use cases.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="project">
-            <div class="project-top" data-label="AI + Fleet">🚘</div>
-            <div class="project-body">
-              <h3>AI Dashcam Monitoring</h3>
-              <p>AI-powered monitoring solution for fleet safety, driver behavior visibility, and operational supervision.</p>
+        <nav class="project-directory" aria-label="Project categories">
+          <a href="#project-ai">AI &amp; Computer Vision</a>
+          <a href="#project-ev">EV &amp; Smart Mobility</a>
+          <a href="#project-city">Smart City &amp; Environment</a>
+          <a href="#project-industrial">Industrial, Water &amp; Energy</a>
+          <a href="#project-agriculture">Agriculture</a>
+          <a href="#project-social">Social Impact</a>
+        </nav>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Use Case</small><b>Fleet Safety</b></div>
-                <div class="meta-box"><small>Deployment</small><b>Perbadanan Putrajaya</b></div>
-                <div class="meta-box"><small>Stack</small><b>AI Camera + Dashboard</b></div>
-                <div class="meta-box"><small>Role</small><b>System Delivery</b></div>
+        <div class="project-groups">
+          <div class="project-category" id="project-ai">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">🤖</span>
+              <div class="category-copy">
+                <h3>AI &amp; Computer Vision</h3>
+                <p>Edge intelligence and visual monitoring systems for real-time operational awareness.</p>
               </div>
-
-              <div class="impact">Impact: Better fleet visibility, monitoring, and driver safety intelligence.</div>
-              <a class="project-link" href="#architecture">View architecture →</a>
+              <span class="category-count">2 Projects</span>
             </div>
-          </article>
 
-          <article class="project">
-            <div class="project-top" data-label="RFID + Aid">🍚</div>
-            <div class="project-body">
-              <h3>Smart Rice Machine for Asnaf</h3>
-              <p>RFID-based rice aid dispensing system connected to server-side allocation and registration workflows.</p>
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="Edge AI">📹</div>
+                <div class="project-body">
+                  <h3>Edge AI Recognition System</h3>
+                  <p>Computer-vision platform that connects an edge recognition workflow with a live monitoring dashboard.</p>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Problem</small><b>Manual Aid Distribution</b></div>
-                <div class="meta-box"><small>Hardware</small><b>RFID + Dispenser</b></div>
-                <div class="meta-box"><small>Backend</small><b>Server Allocation</b></div>
-                <div class="meta-box"><small>Period</small><b>COVID-19 NGO</b></div>
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Computer Vision</b></div>
+                    <div class="meta-box"><small>Processing</small><b>Edge AI</b></div>
+                    <div class="meta-box"><small>Interface</small><b>Live Dashboard</b></div>
+                    <div class="meta-box"><small>Use Case</small><b>Recognition</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Brings AI recognition and monitoring closer to the operational environment.</div>
+                  <a class="project-link" href="https://envirogad.com/aisystem/detectai/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="AI + Fleet">🚘</div>
+                <div class="project-body">
+                  <h3>AI Dashcam Monitoring</h3>
+                  <p>AI-powered monitoring solution for fleet safety, driver behavior visibility, and operational supervision.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Use Case</small><b>Fleet Safety</b></div>
+                    <div class="meta-box"><small>Deployment</small><b>Perbadanan Putrajaya</b></div>
+                    <div class="meta-box"><small>Stack</small><b>AI Camera + Dashboard</b></div>
+                    <div class="meta-box"><small>Role</small><b>System Delivery</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Better fleet visibility, monitoring, and driver safety intelligence.</div>
+                  <a class="project-link" href="#architecture">View architecture →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="project-category" id="project-ev">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">⚡</span>
+              <div class="category-copy">
+                <h3>EV &amp; Smart Mobility</h3>
+                <p>Digital platforms supporting electric-vehicle infrastructure, station discovery, and mobility operations.</p>
               </div>
-
-              <div class="impact">Impact: Automated and controlled aid distribution for eligible Asnaf recipients.</div>
-              <a class="project-link" href="projects/smart-rice-machine.html">Open case study →</a>
+              <span class="category-count">1 Project</span>
             </div>
-          </article>
 
-          <article class="project">
-            <div class="project-top" data-label="IoT + Farm">🌱</div>
-            <div class="project-body">
-              <h3>Smart Farming Dashboard</h3>
-              <p>Real-time fig farm dashboard for crop, environment, and sensor monitoring.</p>
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="EV + Smart City">🔋</div>
+                <div class="project-body">
+                  <h3>EV Smart City Platform</h3>
+                  <p>Smart mobility dashboard for EV charging and battery-swap station visibility, location discovery, and operational monitoring.</p>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Domain</small><b>Agriculture</b></div>
-                <div class="meta-box"><small>Data</small><b>Sensor Telemetry</b></div>
-                <div class="meta-box"><small>Output</small><b>Dashboard</b></div>
-                <div class="meta-box"><small>Company</small><b>PICORP</b></div>
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Use Case</small><b>Station Locator</b></div>
+                    <div class="meta-box"><small>Feature</small><b>Battery Swap</b></div>
+                    <div class="meta-box"><small>Interface</small><b>Location Dashboard</b></div>
+                    <div class="meta-box"><small>Domain</small><b>Smart Mobility</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Improves EV infrastructure visibility and access to charging and battery-swap services.</div>
+                  <a class="project-link" href="https://envirogad.com/scity/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="project-category" id="project-city">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">🏙️</span>
+              <div class="category-copy">
+                <h3>Smart City &amp; Environmental Operations</h3>
+                <p>Connected platforms that improve visibility across public spaces and municipal services.</p>
               </div>
-
-              <div class="impact">Impact: Improved farm visibility through real-time monitoring and reporting.</div>
-              <a class="project-link" href="#experience">View context →</a>
+              <span class="category-count">2 Projects</span>
             </div>
-          </article>
 
-          <article class="project">
-            <div class="project-top" data-label="EV + Map">⚡</div>
-            <div class="project-body">
-              <h3>EV Charging Platform</h3>
-              <p>Dashboard for EV charging and battery swap station visibility, location discovery, and operational monitoring.</p>
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="Crowd Intelligence">👥</div>
+                <div class="project-body">
+                  <h3>Crowd Ops Control</h3>
+                  <p>Operational dashboard for crowd monitoring, people-flow visibility, and situational awareness in busy environments.</p>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Use Case</small><b>Station Locator</b></div>
-                <div class="meta-box"><small>Feature</small><b>Battery Swap</b></div>
-                <div class="meta-box"><small>UI</small><b>Location Dashboard</b></div>
-                <div class="meta-box"><small>Domain</small><b>Smart Mobility</b></div>
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Public Operations</b></div>
+                    <div class="meta-box"><small>Use Case</small><b>Crowd Monitoring</b></div>
+                    <div class="meta-box"><small>Output</small><b>Ops Dashboard</b></div>
+                    <div class="meta-box"><small>Focus</small><b>Live Awareness</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Supports faster operational awareness and more informed crowd-management decisions.</div>
+                  <a class="project-link" href="https://envirogad.com/asm/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="Smart Environment">🗑️</div>
+                <div class="project-body">
+                  <h3>Smart Waste Bin Tracker</h3>
+                  <p>Smart waste monitoring platform for tracking bin status, operations, and city-service visibility.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Smart City</b></div>
+                    <div class="meta-box"><small>Feature</small><b>Bin Tracking</b></div>
+                    <div class="meta-box"><small>Output</small><b>Ops Dashboard</b></div>
+                    <div class="meta-box"><small>Goal</small><b>Cleaner City</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Supports smarter collection planning and more visible city-service operations.</div>
+                  <a class="project-link" href="https://envirogad.com/swbt/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="project-category" id="project-industrial">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">🏭</span>
+              <div class="category-copy">
+                <h3>Industrial AI, Water &amp; Energy</h3>
+                <p>Monitoring, intelligence, and configuration systems for critical equipment and resource operations.</p>
               </div>
-
-              <div class="impact">Impact: Better EV station visibility and battery swap accessibility.</div>
-              <a class="project-link" href="#solutions">View solution →</a>
+              <span class="category-count">4 Projects</span>
             </div>
-          </article>
 
-          <article class="project">
-            <div class="project-top" data-label="Smart City">🗑️</div>
-            <div class="project-body">
-              <h3>Smart Waste Bin Tracker</h3>
-              <p>Smart waste monitoring platform for tracking bin status, operations, and city service visibility.</p>
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="Pump + AI">⚙️</div>
+                <div class="project-body">
+                  <h3>Smart Pump AI Monitoring</h3>
+                  <p>AI-assisted pump monitoring platform that centralizes equipment status, performance visibility, and maintenance insights.</p>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Domain</small><b>Smart City</b></div>
-                <div class="meta-box"><small>Feature</small><b>Bin Tracking</b></div>
-                <div class="meta-box"><small>Output</small><b>Ops Dashboard</b></div>
-                <div class="meta-box"><small>Goal</small><b>Cleaner City</b></div>
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Asset</small><b>Industrial Pump</b></div>
+                    <div class="meta-box"><small>Capability</small><b>AI Monitoring</b></div>
+                    <div class="meta-box"><small>Interface</small><b>Dashboard</b></div>
+                    <div class="meta-box"><small>Focus</small><b>Asset Health</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Makes pump condition and operational performance easier to monitor from one system.</div>
+                  <a class="project-link" href="https://envirogad.com/spm/login.php" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="Water Intelligence">💧</div>
+                <div class="project-body">
+                  <h3>Water Pump System Intelligence</h3>
+                  <p>System-intelligence dashboard for viewing water-pump data, performance indicators, and operating conditions.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Water Systems</b></div>
+                    <div class="meta-box"><small>Asset</small><b>Water Pump</b></div>
+                    <div class="meta-box"><small>Output</small><b>System Insights</b></div>
+                    <div class="meta-box"><small>Use Case</small><b>Operations</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Consolidates pump information to support clearer operational decisions.</div>
+                  <a class="project-link" href="https://envirogad.com/wp/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="Energy Intelligence">📊</div>
+                <div class="project-body">
+                  <h3>Intelligent Audit Energy System</h3>
+                  <p>Digital energy-audit platform for organizing performance data, surfacing insights, and supporting audit workflows.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Energy</b></div>
+                    <div class="meta-box"><small>Use Case</small><b>Energy Audit</b></div>
+                    <div class="meta-box"><small>Capability</small><b>Intelligence</b></div>
+                    <div class="meta-box"><small>Output</small><b>Audit Dashboard</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Improves the visibility and organization of energy-performance information.</div>
+                  <a class="project-link" href="https://envirogad.com/ieam/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="Industrial IoT">🔌</div>
+                <div class="project-body">
+                  <h3>IOScout Configurator</h3>
+                  <p>Configurator for in-house industrial data-logger products, streamlining setup and device configuration.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Product</small><b>Data Logger</b></div>
+                    <div class="meta-box"><small>Purpose</small><b>Configuration</b></div>
+                    <div class="meta-box"><small>Company</small><b>PICORP</b></div>
+                    <div class="meta-box"><small>Domain</small><b>Industrial IoT</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Faster product setup and more consistent technical configuration.</div>
+                  <a class="project-link" href="#architecture">View flow →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="project-category" id="project-agriculture">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">🌱</span>
+              <div class="category-copy">
+                <h3>Smart Agriculture</h3>
+                <p>Digital systems for crop-environment visibility, controlled growing, and farm operations.</p>
               </div>
-
-              <div class="impact">Impact: Supports smarter collection planning and city service operations.</div>
-              <a class="project-link" href="#solutions">View solution →</a>
+              <span class="category-count">2 Projects</span>
             </div>
-          </article>
 
-          <article class="project">
-            <div class="project-top" data-label="Industrial IoT">🏭</div>
-            <div class="project-body">
-              <h3>IOScout Configurator</h3>
-              <p>Configurator for in-house industrial data logger products, streamlining setup and device configuration.</p>
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="Smart Cultivation">🍄</div>
+                <div class="project-body">
+                  <h3>Mushroom Growth Intelligent System</h3>
+                  <p>Intelligent cultivation dashboard for monitoring mushroom growing conditions and farm operations.</p>
 
-              <div class="project-meta">
-                <div class="meta-box"><small>Product</small><b>Data Logger</b></div>
-                <div class="meta-box"><small>Purpose</small><b>Configuration</b></div>
-                <div class="meta-box"><small>Company</small><b>PICORP</b></div>
-                <div class="meta-box"><small>Domain</small><b>Industrial IoT</b></div>
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Agriculture</b></div>
+                    <div class="meta-box"><small>Crop</small><b>Mushroom</b></div>
+                    <div class="meta-box"><small>Capability</small><b>Growth Monitoring</b></div>
+                    <div class="meta-box"><small>Output</small><b>Farm Dashboard</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Gives growers a clearer view of cultivation conditions and farm activity.</div>
+                  <a class="project-link" href="https://envirogad.com/smm/" target="_blank" rel="noopener noreferrer">View live project ↗</a>
+                </div>
+              </article>
+
+              <article class="project">
+                <div class="project-top" data-label="IoT + Farm">🌿</div>
+                <div class="project-body">
+                  <h3>Smart Farming Dashboard</h3>
+                  <p>Real-time fig-farm dashboard for crop, environment, and sensor monitoring.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Domain</small><b>Agriculture</b></div>
+                    <div class="meta-box"><small>Data</small><b>Sensor Telemetry</b></div>
+                    <div class="meta-box"><small>Output</small><b>Dashboard</b></div>
+                    <div class="meta-box"><small>Company</small><b>PICORP</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Improved farm visibility through real-time monitoring and reporting.</div>
+                  <a class="project-link" href="#experience">View context →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="project-category" id="project-social">
+            <div class="project-category-head">
+              <span class="category-icon" aria-hidden="true">🤝</span>
+              <div class="category-copy">
+                <h3>Social Impact &amp; Automation</h3>
+                <p>Purpose-built automation that connects physical devices with controlled digital workflows.</p>
               </div>
-
-              <div class="impact">Impact: Faster product setup and more consistent technical configuration.</div>
-              <a class="project-link" href="#architecture">View flow →</a>
+              <span class="category-count">1 Project</span>
             </div>
-          </article>
+
+            <div class="category-grid">
+              <article class="project">
+                <div class="project-top" data-label="RFID + Aid">🍚</div>
+                <div class="project-body">
+                  <h3>Smart Rice Machine for Asnaf</h3>
+                  <p>RFID-based rice-aid dispensing system connected to server-side allocation and registration workflows.</p>
+
+                  <div class="project-meta">
+                    <div class="meta-box"><small>Problem</small><b>Manual Aid Distribution</b></div>
+                    <div class="meta-box"><small>Hardware</small><b>RFID + Dispenser</b></div>
+                    <div class="meta-box"><small>Backend</small><b>Server Allocation</b></div>
+                    <div class="meta-box"><small>Period</small><b>COVID-19 NGO</b></div>
+                  </div>
+
+                  <div class="impact">Impact: Automated and controlled aid distribution for eligible Asnaf recipients.</div>
+                  <a class="project-link" href="projects/smart-rice-machine.html">Open case study →</a>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
